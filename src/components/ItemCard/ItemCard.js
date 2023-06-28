@@ -35,7 +35,7 @@ const ItemCard = (props) => {
         <img src={props.imageURL} alt="Card" className="card-img-left p-0 col-3 ms-2" />
         <div className="row col ms-1 mt-3">
           <div>{props.title}</div>
-          <div className='mb-0 align-bottom'>
+          <div className='mb-0 align-bottom d-none d-md-block'>
             {props.genres.map((item) => (
               <div className="badge bg-secondary p-1 m-1 col rounded-pill">{item}</div>
             ))}

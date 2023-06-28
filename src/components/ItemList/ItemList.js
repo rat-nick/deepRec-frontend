@@ -5,7 +5,7 @@ import ItemCard from '../ItemCard/ItemCard';
 
 const ItemList = (props) => (
 
-  <div className="item-list overflow-scroll" style={{ height: "92vh" }}>
+  <div className="item-list overflow-scroll" style={{ height: "100vh" }}>
     {[...props.items].map((item) => (
       <ItemCard
         onLike={() => props.positiveAction(item)}
