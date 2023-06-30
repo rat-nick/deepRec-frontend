@@ -1,22 +1,22 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import './ItemList.css';
 import ItemCard from '../ItemCard/ItemCard';
 
-const ItemList = (props) => (
+function ItemList(props) {
 
-  <div className="item-list overflow-scroll" style={{ height: "100vh" }}>
-    {[...props.items].map((item) => (
-      <ItemCard
-        onLike={() => props.onItemLike(item)}
-        onDislike={() => props.onItemDislike(item)}
-        onRemove={() => props.onItemRemove(item)}
-        {...item}>
-      </ItemCard>
-    ))}
-  </div >
-
-);
+  return (
+    <div className="item-list overflow-y-auto overflow-x-hidden h-100 z-0" >
+      {[...props.items].map((item) => (
+        <ItemCard
+          onLike={() => props.onItemLike(item)}
+          onDislike={() => props.onItemDislike(item)}
+          onRemove={() => props.onItemRemove(item)}
+          {...item}>
+        </ItemCard>
+      ))}
+    </div >
+  )
+};
 
 ItemList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),

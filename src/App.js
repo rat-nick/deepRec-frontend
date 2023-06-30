@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemList from './components/ItemList/ItemList';
 import films from './movies.json';
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { Search, SearchHeartFill, Stars } from 'react-bootstrap-icons';
+import { SearchHeartFill, Stars } from 'react-bootstrap-icons';
 import './App.css';
 
 
@@ -14,16 +14,15 @@ function App() {
   const [recommendations, setRecommendations] = useState([])
 
   let preferenceList =
-    <h4 className="col-12 col-md d-flex align-items-center border-dashed justify-content-center border border-black border-3 rounded-3 opacity-50 ">
-      <p className='justify-content-center h2 d-flex'>
-        Search for some films <SearchHeartFill />
-      </p>
-    </h4 >
+    <div className="bg-secondary-subtle col-12 d-flex align-items-center col-md border-dashed border border-black border-3 rounded-3 opacity-50 h-75">
+      <p class='text-center h2'>Search for some films so we can understan your preferences <br /><SearchHeartFill /></p>
+    </div>
   if (preferences.length > 0) {
     preferenceList =
-      <div className="col-12 col-md my-2 vh-100">
+      <div className="col-12 col-md p-1 g-0 h-100 bg-primary-subtle h-75">
         <ItemList
           items={[...preferences]}
+          className="h-100"
           onItemRemove={(item) => {
             item.status = 0;
             setPreferences(prev => prev.filter(x => x !== item));
@@ -33,17 +32,14 @@ function App() {
   }
 
   let recomendationsList =
-    <h4 className="col-12 col-md d-flex align-items-center justify-content-center border border-dashed border-black border-3 rounded-3 opacity-50">
-      <div className='justify-content-center h2 d-flex'>
-        Recommendations appear here <Stars />
-      </div>
-    </h4>
+    <div className="bg-secondary-subtle col-12 col-md d-flex align-items-center justify-content-center border border-dashed border-black border-3 rounded-3 opacity-50 h-75">
+      <p class='text-center h2'>Recommendations appear here <br /><Stars /></p>
+    </div >
   if (recommendations.length > 0) {
     recomendationsList =
-      <div className='col-12 col-md vh-100'>
+      <div className='col-12 col-md bg-primary-subtle h-75'>
         <ItemList
           items={recommendations}
-          className='overflow-auto'
           onItemLike={(item) => {
             item.status = 1;
             setPreferences([item, ...preferences]);
@@ -62,32 +58,37 @@ function App() {
 
 
   return (
-    <div className="container-fluid m-0 p-0">
+    <div className="container-fluid">
       <button
-        className="btn btn-primary float-end rounded-start-circle rounded-end-0 p-3 sticky-top"
+        className="btn btn-primary position-fixed start-0 bottom-0 rounded-circle p-3 m-3 z-3"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#searchPanel"
         aria-controls="offcanvasExample">
-        <Search className='fw-bold display-6' />
+        <SearchHeartFill className='fw-bold display-6' />
       </button>
-      <div className="container-xxl m-auto">
-        <div className="row my-5 text-center align-content-center justify-content-center display-5">
-          Film recommender system
+
+      <div className="container-fluid container-xxl m-auto h-75">
+
+        <div className="row my-5 text-center align-content-center justify-content-center display-5 navbar navbar-expand-md d-md-block d-none">
+          <div className="box-flex">Film recommender system </div>
+
         </div>
 
         {/* Search Panel Off Canvas */}
-        <div className="offcanvas offcanvas-end " tabIndex="-1" id='searchPanel' aria-labelledby="offcanvasLabel">
+        <div className="offcanvas offcanvas-start " tabIndex="-1" id='searchPanel' aria-labelledby="offcanvasLabel">
           <div className='offcanvas-header'>
 
-            <div className="input-group">
-              <input type="text" className="form-control m-1" placeholder='search' aria-label='search' />
+            <div className="input-group justify-content-center align-items-center d-flex ">
+              <input type="text" className="form-control m-1" placeholder='search' aria-label='search' autoFocus />
               <button type="button" class="btn-close" data-bs-target="#searchPanel" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+
           </div>
+
           <ItemList
             id="searchResults"
-            className='offcanvas-body overflow-scroll '
+            className='offcanvas-body overflow-y-scroll '
             items={[...searchResults].filter(x =>
               !preferences.includes(x) &&
               !recommendations.includes(x)
@@ -114,12 +115,14 @@ function App() {
 
           {/* List of prefered items */}
           {preferenceList}
-          <div class='col-12 col-md-2 justify-content-center d-flex align-items-center'>
-            <button className='btn btn-primary'>
+
+          <div class='col-12 col-md-3 justify-content-center d-flex align-items-center box m-0 h-75'>
+            <button className='btn btn-primary fs-3 w-100 p-2 z-4'>
               Recommend
               <Stars></Stars>
             </button>
           </div>
+
           {/* List of recommended items */}
           {recomendationsList}
 
