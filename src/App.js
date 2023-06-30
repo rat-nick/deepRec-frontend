@@ -116,7 +116,7 @@ function App() {
           {/* List of prefered items */}
           {preferenceList}
 
-          <div class='col-12 col-md-3 justify-content-center d-flex align-items-center box m-0 h-75'>
+          <div class='col-12 col-md-3 justify-content-center d-flex align-items-center box my-2'>
             <button className='btn btn-primary fs-3 w-100 p-2 z-4'>
               Recommend
               <Stars></Stars>

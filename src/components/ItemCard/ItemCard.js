@@ -37,11 +37,11 @@ const ItemCard = (props) => {
         <img src={props.imageURL} alt="Card" className="card-img-left ps-0 col-3 ms-0" />
         <div className="row col ms-1 mt-3">
           <div>{props.title}</div>
-          <div className='mb-0 align-items-bottom d-none d-md-flex'>
+          <p className='m-auto align-bottom d-flex align-bottom flex-wrap'>
             {props.genres.map((item) => (
-              <div className="badge bg-secondary p-1 m-1 col rounded-pill">{item}</div>
+              <span className="badge bg-secondary p-1 m-1 rounded-pill align-bottom ">{item}</span>
             ))}
-          </div>
+          </p>
         </div>
         <div className="col-2 row p-3 py-3 top-0 end-100">
           {buttons}
@@ -64,7 +64,7 @@ ItemCard.defaultProps = {
   imageURL: 'https://placehold.it/150x225',
   title: 'Some Title',
   description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum deserunt quidem enim optio eos omnis itaque cum incidunt corporis officiis! Non, minus ex distinctio incidunt consectetur assumenda ipsam ut ipsum.",
-  genres: ["Action", "SciFi", "Drama"],
+  genres: ["Action", "SciFi", "Drama", "Romance", "Comedy", "Mystery", "Crime"],
   year: 2000,
   status: 0,
 }
