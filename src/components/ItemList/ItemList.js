@@ -8,9 +8,11 @@ const ItemList = (props) => (
   <div className="item-list overflow-scroll" style={{ height: "100vh" }}>
     {[...props.items].map((item) => (
       <ItemCard
-        onLike={() => props.positiveAction(item)}
-        onDislike={() => props.negativeAction(item)}
-        {...item}></ItemCard>
+        onLike={() => props.onItemLike(item)}
+        onDislike={() => props.onItemDislike(item)}
+        onRemove={() => props.onItemRemove(item)}
+        {...item}>
+      </ItemCard>
     ))}
   </div >
 
@@ -18,14 +20,17 @@ const ItemList = (props) => (
 
 ItemList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
-  positiveAction: PropTypes.func,
-  negativeAction: PropTypes.func,
+  onItemLike: PropTypes.func,
+  onItemDislike: PropTypes.func,
+  onItemRemove: PropTypes.func,
+
 };
 
 ItemList.defaultProps = {
   items: [],
-  positiveAction: () => console.log("positive action"),
-  negativeAction: () => console.log("negative action"),
+  onItemLike: () => console.log(`Liked`),
+  onItemDislike: () => console.log(`Disliked`),
+  onItemRemove: () => console.log(`Removed`),
 };
 
 export default ItemList;
