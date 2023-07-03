@@ -5,7 +5,7 @@ import ItemCard from '../ItemCard/ItemCard';
 function ItemList(props) {
 
   return (
-    <div className="item-list overflow-y-auto overflow-x-hidden h-100 z-0" >
+    <div className="item-list overflow-y-auto overflow-x-hidden z-0" >
       {[...props.items].map((item) => (
         <ItemCard
           onLike={() => props.onItemLike(item)}

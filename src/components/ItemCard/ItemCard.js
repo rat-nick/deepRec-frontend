@@ -7,19 +7,17 @@ import Button from '../Button/Button';
 
 const ItemCard = (props) => {
 
-  let likeButton = <Button className="btn btn-success m-auto p-1" text={<HandThumbsUpFill />} onClick={() => props.onLike()} />;
-  let dislikeButton = <Button className="btn btn-danger m-auto p-1" text={<HandThumbsDownFill />} onClick={() => props.onDislike()} />;
-  let deleteButton = <Button className="btn btn-warning m-auto p-1" text={<XLg />} onClick={() => props.onRemove()} />;
+  let likeButton = <Button className="btn btn-success m-auto " text={<HandThumbsUpFill />} onClick={() => props.onLike()} />;
+  let dislikeButton = <Button className="btn btn-danger m-auto " text={<HandThumbsDownFill />} onClick={() => props.onDislike()} />;
+  let deleteButton = <Button className="btn btn-warning m-auto " text={<XLg />} onClick={() => props.onRemove()} />;
 
   let buttons =
-    <React.Fragment class="position-relative">
+    <React.Fragment>
       {likeButton}{dislikeButton}
     </React.Fragment>
   if (props.status !== 0) {
-    buttons =
-      <React.Fragment class="position-relative">
-        {deleteButton}
-      </React.Fragment>
+    buttons = deleteButton
+      
   }
 
 
@@ -32,18 +30,18 @@ const ItemCard = (props) => {
 
 
   return (
-    <div className={`card ${bg} d-flex`}>
+    <div className={`card ${bg} d-flex`} style={{'max-height': '225px'}}>
       <div div className="card-body d-flex py-0 ps-0">
         <img src={props.imageURL} alt="Card" className="card-img-left ps-0 col-3 ms-0" />
-        <div className="row col ms-1 mt-3">
-          <div>{props.title}</div>
-          <p className='m-auto align-bottom d-flex align-bottom flex-wrap'>
+        <div className="row col ms-1 mt-2">
+          <p class='fs-5'>{props.title}</p>
+          <p className='m-auto me-1 align-bottom d-flex align-items-bottom flex-wrap '>
             {props.genres.map((item) => (
               <span className="badge bg-secondary p-1 m-1 rounded-pill align-bottom ">{item}</span>
             ))}
           </p>
         </div>
-        <div className="col-2 row p-3 py-3 top-0 end-100">
+        <div className="card-actions d-flex flex-column">
           {buttons}
         </div>
       </div>
@@ -64,7 +62,7 @@ ItemCard.defaultProps = {
   imageURL: 'https://placehold.it/150x225',
   title: 'Some Title',
   description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum deserunt quidem enim optio eos omnis itaque cum incidunt corporis officiis! Non, minus ex distinctio incidunt consectetur assumenda ipsam ut ipsum.",
-  genres: ["Action", "SciFi", "Drama", "Romance", "Comedy", "Mystery", "Crime"],
+  genres: ["Action", "SciFi"],
   year: 2000,
   status: 0,
 }

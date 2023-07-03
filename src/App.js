@@ -15,11 +15,11 @@ function App() {
 
   let preferenceList =
     <div className="bg-secondary-subtle col-12 d-flex align-items-center col-md border-dashed border border-black border-3 rounded-3 opacity-50 h-75">
-      <p class='text-center h2'>Search for some films so we can understan your preferences <br /><SearchHeartFill /></p>
+      <p class='text-center h2'>Search for some films so we can understan your preferences <br /><span class='display-3'><SearchHeartFill /></span></p>
     </div>
   if (preferences.length > 0) {
     preferenceList =
-      <div className="col-12 col-md p-1 g-0 h-100 bg-primary-subtle h-75">
+      <div className="col-12 col-md p-1 g-0 h-100 bg-primary-subtle mh-75">
         <ItemList
           items={[...preferences]}
           className="h-100"
@@ -33,7 +33,7 @@ function App() {
 
   let recomendationsList =
     <div className="bg-secondary-subtle col-12 col-md d-flex align-items-center justify-content-center border border-dashed border-black border-3 rounded-3 opacity-50 h-75">
-      <p class='text-center h2'>Recommendations appear here <br /><Stars /></p>
+      <p class='text-center h2'>Recommendations appear here <br /><span class='display-3'><Stars /></span></p>
     </div >
   if (recommendations.length > 0) {
     recomendationsList =
