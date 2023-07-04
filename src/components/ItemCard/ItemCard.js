@@ -17,7 +17,7 @@ const ItemCard = (props) => {
     </React.Fragment>
   if (props.status !== 0) {
     buttons = deleteButton
-      
+
   }
 
 
@@ -30,11 +30,11 @@ const ItemCard = (props) => {
 
 
   return (
-    <div className={`card ${bg} d-flex`} style={{'max-height': '225px'}}>
+    <div className={`card ${bg} d-flex`} >
       <div div className="card-body d-flex py-0 ps-0">
-        <img src={props.imageURL} alt="Card" className="card-img-left ps-0 col-3 ms-0" />
+        <img src={props.imageURL} alt="Card" className="card-img-left ps-0 col-4 col-sm-3 ms-0" />
         <div className="row col ms-1 mt-2">
-          <p class='fs-5'>{props.title}</p>
+          <p class='fs-6'>{props.title}<br /><span class='fs-0'>({props.year})</span></p>
           <p className='m-auto me-1 align-bottom d-flex align-items-bottom flex-wrap '>
             {props.genres.map((item) => (
               <span className="badge bg-secondary p-1 m-1 rounded-pill align-bottom ">{item}</span>

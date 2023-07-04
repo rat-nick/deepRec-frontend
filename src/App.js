@@ -19,10 +19,9 @@ function App() {
     </div>
   if (preferences.length > 0) {
     preferenceList =
-      <div className="col-12 col-md p-1 g-0 h-100 bg-primary-subtle mh-75">
+      <div className="col-12 col-lg p-1 g-0 bg-primary-subtle h-75 overflow-y-scroll shadow-lg rounded-1">
         <ItemList
           items={[...preferences]}
-          className="h-100"
           onItemRemove={(item) => {
             item.status = 0;
             setPreferences(prev => prev.filter(x => x !== item));
@@ -37,7 +36,7 @@ function App() {
     </div >
   if (recommendations.length > 0) {
     recomendationsList =
-      <div className='col-12 col-md bg-primary-subtle h-75'>
+      <div className='col-12 col-lg p-1 g-0 bg-primary-subtle h-75 overflow-y-scroll shadow-lg rounded-1'>
         <ItemList
           items={recommendations}
           onItemLike={(item) => {
@@ -68,7 +67,7 @@ function App() {
         <SearchHeartFill className='fw-bold display-6' />
       </button>
 
-      <div className="container-fluid container-xxl m-auto h-75">
+      <div className="container-fluid container-xxl m-auto h-100">
 
         <div className="row my-5 text-center align-content-center justify-content-center display-5 navbar navbar-expand-md d-md-block d-none">
           <div className="box-flex">Film recommender system </div>
